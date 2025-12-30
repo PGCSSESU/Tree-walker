@@ -2,10 +2,10 @@
 ## 📸 Screenshots
 
 ### Home Page
-![Home Page](src/assets/image.png)
+![Home Page](src/assets/image1.png)
 
 ### Tree Walks
-![Sign Up](src/assets/image1.png)
+![Sign Up](src/assets/image.png)
 
 
 
