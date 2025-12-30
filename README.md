@@ -3,16 +3,11 @@ Welcome to Tree Walker!
 ## 📸 Screenshots
 
 ### Home Page
-![Home Page](Backend/assets/home.png)
+![Home Page](src/assets/image.png)
 
-### SignUp
-![Sign Up](Backend/assets/signup.png)
+### Tree walks
+![Sign Up](src/assets/image1.png)
 
-### SignIn
-![Sign In](Backend/assets/signin.png)
-
-### Tasks
-![Tasks](Backend/assets/tasks.png)
 
 
 
