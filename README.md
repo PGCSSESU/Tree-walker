@@ -1,5 +1,20 @@
 Welcome to Tree Walker! 
 
+## 📸 Screenshots
+
+### Home Page
+![Home Page](Backend/assets/home.png)
+
+### SignUp
+![Sign Up](Backend/assets/signup.png)
+
+### SignIn
+![Sign In](Backend/assets/signin.png)
+
+### Tasks
+![Tasks](Backend/assets/tasks.png)
+
+
 
 # Befor running the application run this command 
 
