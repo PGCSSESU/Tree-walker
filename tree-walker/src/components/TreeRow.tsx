@@ -15,23 +15,23 @@ type Props = {
   node: FlatNode;
   expanded: boolean;
   toggle: () => void;
-  active: boolean; 
+  active: boolean;
 };
 
 function getFolderColor(name: string) {
   const n = name.toLowerCase();
-  if (n.includes("src")) return "text-blue-600";
-  if (n.includes("component")) return "text-yellow-600";
-  if (n.includes("asset") || n.includes("media")) return "text-purple-600";
+  if (n.includes("src")) return "text-emerald-600";
+  if (n.includes("component")) return "text-lime-600";
   if (n.includes("hook")) return "text-green-600";
-  return "text-gray-700";
+  if (n.includes("asset") || n.includes("media")) return "text-purple-600";
+  return "text-slate-600";
 }
 
 function getFileIcon(name: string, active: boolean) {
   const base = "h-4 w-4";
 
   if (active) {
-    return <FileCode2 className={cn(base, "text-blue-600")} />;
+    return <FileCode2 className={cn(base, "text-emerald-600")} />;
   }
 
   if (name.endsWith(".js"))
@@ -55,16 +55,30 @@ export function TreeRow({ node, expanded, toggle, active }: Props) {
     <div
       onClick={isFolder ? toggle : undefined}
       className={cn(
-        "group flex items-center h-8 rounded px-2 text-sm",
-        "cursor-pointer select-none transition-colors ",
+        "group flex items-center h-8 px-2 rounded-md text-sm",
+        "cursor-pointer select-none",
+        "transition-colors duration-150",
         active
-          ? "bg-blue-50 text-blue-700 font-medium"
-          : "hover:bg-gray-100"
+          ? `
+              bg-white
+              text-emerald-700
+              ring-1 ring-emerald-300
+              shadow-[0_0_12px_rgba(16,185,129,0.18)]
+            `
+          : "text-slate-700 hover:bg-emerald-50"
       )}
       style={{ paddingLeft: node.level * 16 }}
     >
+      {/* Chevron */}
       {isFolder ? (
-        <span className="mr-1 text-gray-500 group-hover:text-gray-700">
+        <span
+          className={cn(
+            "mr-1 transition-colors",
+            active
+              ? "text-emerald-600"
+              : "text-slate-400 group-hover:text-emerald-600"
+          )}
+        >
           {expanded ? (
             <ChevronDown className="h-4 w-4" />
           ) : (
@@ -75,23 +89,37 @@ export function TreeRow({ node, expanded, toggle, active }: Props) {
         <span className="mr-1 w-4" />
       )}
 
-      <span className="mr-2">
+      {/* Icon */}
+      <span className="mr-2 flex items-center">
         {isFolder ? (
           expanded ? (
             <FolderOpen
-              className={cn("h-4 w-4", getFolderColor(node.name))}
+              className={cn(
+                "h-4 w-4 transition-colors",
+                active ? "text-emerald-600" : getFolderColor(node.name)
+              )}
             />
           ) : (
             <Folder
-              className={cn("h-4 w-4", getFolderColor(node.name))}
+              className={cn(
+                "h-4 w-4 transition-colors",
+                active ? "text-emerald-600" : getFolderColor(node.name)
+              )}
             />
           )
         ) : (
           getFileIcon(node.name, active)
         )}
       </span>
-      <span className="truncate">
-        {node.name} 
+
+      {/* Name */}
+      <span
+        className={cn(
+          "truncate",
+          active ? "text-emerald-700" : "text-slate-700"
+        )}
+      >
+        {node.name}
       </span>
     </div>
   );
